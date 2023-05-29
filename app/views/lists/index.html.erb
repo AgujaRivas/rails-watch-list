@@ -1,0 +1,7 @@
+<h1>Movie Lists</h1>
+
+<% @lists.each do |list| %>
+  <div>
+    <h2><%= link_to list.name, list %></h2>
+  </div>
+<% end %>

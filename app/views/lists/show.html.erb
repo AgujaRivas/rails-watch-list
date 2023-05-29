@@ -1,0 +1,16 @@
+<h1>List: <%= @list.name %></h1>
+
+<h2>Movies:</h2>
+<% @list.movies.each do |movie| %>
+  <div>
+    <h3><%= movie.title %></h3>
+  </div>
+<% end %>
+
+<h2>Add Bookmark:</h2>
+<%= simple_form_for [@list, @bookmark] do |f| %>
+  <%= f.input :comment %>
+  <%= f.input :movie_id, collection: Movie.all, label_method: :title, value_method: :id %>
+  <%= f.button :submit, 'Add Bookmark' %>
+<% end %>
+<%= link_to 'Delete List', @list, method: :delete, data: { confirm: 'Are you sure?' } %>
